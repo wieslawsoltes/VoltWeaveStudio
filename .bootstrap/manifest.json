@@ -1,0 +1,12 @@
+{
+  "sha256": "3b7ce13b456d92969e9baa358f34e92cf225a57094f2cd7924b4831270b2bf32",
+  "parts": [
+    ".bootstrap/source-01.b64",
+    ".bootstrap/source-02.b64",
+    ".bootstrap/source-03.b64",
+    ".bootstrap/source-04.b64",
+    ".bootstrap/source-05.b64",
+    ".bootstrap/source-06.b64"
+  ],
+  "fileCount": 32
+}
