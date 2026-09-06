@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#18272a">
+  <meta name="description" content="VoltWeave Studio — graphical programming, live instrument panels and a deterministic dataflow runtime. Local-first. No dependencies.">
+  <title>VoltWeave Studio · Signal Integrity Bench</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%2319292d'/%3E%3Cpath d='M5 21h7l4-11 7 21 5-11h7' fill='none' stroke='%239de59e' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="app-header">
+    <a class="brand" href="#" title="VoltWeave Studio"><span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 21h8l4-11 7 21 5-11h8"/></svg></span><span>VoltWeave<span class="brand-studio">STUDIO</span></span></a>
+    <nav id="menubar" aria-label="Application menu"></nav>
+    <div class="header-end"><span class="local-badge"><span></span> LOCAL WORKSPACE</span><button id="help-button" title="Help and keyboard shortcuts" aria-label="Help">?</button><span class="avatar">VW</span></div>
+  </header>
+  <section class="toolbar" aria-label="Execution toolbar">
+    <div id="execution-tools" class="tool-group"></div><span class="tool-divider"></span>
+    <div id="edit-tools" class="tool-group"></div><span class="tool-divider"></span>
+    <div id="debug-tools" class="tool-group"></div>
+    <div class="toolbar-spacer"></div>
+    <span id="run-state" class="state-pill"><i></i> INITIALIZING</span>
+    <button id="save-project" class="save-button"></button>
+  </section>
+  <main class="main-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-tabs"><button class="active" data-side="project">Project</button><button data-side="palette">Functions</button></div>
+      <div id="project-pane">
+        <div class="section-heading"><span>PROJECT EXPLORER</span><button id="new-vi" title="New reusable VI">+</button></div>
+        <div id="project-tree"></div>
+        <div class="section-heading palette-title"><span>QUICK INSERT</span><span class="keycap">Tab</span></div>
+        <div class="palette-search"><span>⌕</span><input id="quick-search" type="search" placeholder="Find a function…" aria-label="Find a function"></div>
+        <div id="quick-palette"></div>
+      </div>
+      <div id="palette-pane" hidden>
+        <div class="section-heading"><span>FUNCTIONS PALETTE</span><span class="keycap">Tab</span></div>
+        <div class="palette-search"><span>⌕</span><input id="palette-search" type="search" placeholder="Search operators…" aria-label="Search operators"></div>
+        <div id="full-palette"></div>
+      </div>
+      <div class="sidebar-foot"><span class="device-dot"></span><div><strong>Virtual instruments</strong><small>Deterministic · seed <span id="seed-label">1337</span></small></div><span class="sim-tag">SIM</span></div>
+    </aside>
+    <section class="workspace-shell">
+      <div class="document-tabs"><button class="document-tab active" id="document-tab"><span class="vi-mini">VI</span><span id="document-name">Signal Integrity Bench.vi</span><span id="dirty-dot"></span></button><button class="document-new" id="new-project" title="New instrument">+</button><div class="doc-meta"><span class="sim-dot"></span> SIMULATED INSTRUMENTATION</div></div>
+      <div class="workspace-toolbar">
+        <div class="view-tabs" role="tablist"><button data-view="panel" class="active" role="tab" aria-selected="true"></button><button data-view="diagram" role="tab"></button><button data-view="split" role="tab"></button></div>
+        <div id="view-tools"></div>
+      </div>
+      <div id="workspace" class="workspace view-panel">
+        <section id="front-panel" class="front-panel" aria-label="Front panel">
+          <div class="panel-title"><div><span class="eyebrow">VIRTUAL INSTRUMENT / 01</span><h1 id="bench-title">Signal Integrity Bench</h1><p id="bench-description">Generate. Acquire. Analyze.</p></div><div class="bench-status"><span id="bench-live" class="live-dot"></span><span id="bench-status-label">READY</span><span class="bench-serial">VW–DAQ–001</span></div></div>
+          <div class="panel-scroll" id="panel-scroll"><div class="panel-world" id="panel-world"></div></div>
+          <div class="panel-footer"><span><i></i> No hardware required · all instruments are simulated</span><span id="panel-rate">8.192 kS/s · 256 samples / block</span></div>
+        </section>
+        <section id="block-diagram" class="block-diagram" aria-label="Block diagram">
+          <div class="diagram-breadcrumb" id="graph-breadcrumb"></div>
+          <div id="graph-viewport" class="graph-viewport" tabindex="0" aria-label="Graph editor. Drag blocks, connect typed terminals, use wheel to zoom.">
+            <canvas id="graph-canvas" aria-hidden="true"></canvas>
+            <svg id="wire-hits" class="wire-hits" aria-hidden="true"></svg>
+            <div id="node-layer" class="node-layer"></div>
+            <div id="probe-layer" class="probe-layer"></div>
+            <div id="selection-box" hidden></div>
+            <div id="graph-empty" class="graph-empty" hidden><span>⌘</span><h2>A blank canvas for your next instrument.</h2><p>Add a function from the palette, then connect its typed terminals.</p><button id="empty-add">Add your first function</button></div>
+            <div class="graph-hint">Drag to move · terminal → terminal to wire · wheel to zoom · <kbd>F</kbd> fit</div>
+            <div class="zoom-controls"><button id="zoom-out" aria-label="Zoom out">−</button><button id="zoom-value" title="Fit diagram">100%</button><button id="zoom-in" aria-label="Zoom in">+</button></div>
+          </div>
+        </section>
+      </div>
+      <div id="debug-resize" title="Resize debug panel"></div>
+      <section class="debug-panel" id="debug-panel">
+        <div class="debug-header"><div class="debug-tabs"><button data-debug="probes" class="active">Probes <span id="probe-count">2</span></button><button data-debug="trace">Execution trace</button><button data-debug="errors">Diagnostics <span id="error-count">0</span></button><button data-debug="recording">Input recording</button></div><div class="debug-actions"><span id="execution-time">Worker idle</span><button id="clear-log" title="Clear execution log">Clear</button><button id="collapse-debug" title="Collapse debug panel">⌄</button></div></div>
+        <div id="debug-content"></div>
+      </section>
+    </section>
+    <aside class="inspector" id="inspector"><div class="inspector-header"><span>Properties</span><span id="inspector-kind">PROJECT</span></div><div id="inspector-content"></div><div class="inspector-tip"><span>✦</span><p id="context-tip">Select a control, function, or wire to inspect its properties.</p></div></aside>
+  </main>
+  <footer class="statusbar"><div><span id="status-dot" class="status-dot"></span><span id="status-text">Initializing runtime…</span></div><div class="status-right"><span id="engine-label">GPU initializing</span><span id="frame-label">t = 0.000 s</span><span id="graph-stats">15 nodes · 14 wires</span><span id="autosave-label">Local autosave</span></div></footer>
+</div>
+<div id="menu-popup" class="menu-popup" hidden></div>
+<div id="context-menu" class="menu-popup" hidden></div>
+<div id="toast-region" aria-live="polite"></div>
+<dialog id="palette-dialog"><form method="dialog" class="dialog-header"><div><span class="eyebrow">FUNCTIONS & CONTROLS</span><h2>Build something that works.</h2></div><button aria-label="Close">×</button></form><div class="palette-dialog-search"><input id="command-search" type="search" placeholder="Search numeric, waveform, structures…" autocomplete="off" aria-label="Search all operators"><kbd>ESC</kbd></div><div class="command-tabs"><button data-command-tab="nodes" class="active">Functions</button><button data-command-tab="widgets">Front-panel controls</button></div><div id="command-results"></div><div class="dialog-footer">Select to insert · Drag blocks to arrange · Connect matching port colors</div></dialog>
+<dialog id="help-dialog"><form method="dialog" class="dialog-header"><div><span class="eyebrow">VOLTWEAVE STUDIO</span><h2>Your instrument. Your dataflow.</h2></div><button aria-label="Close">×</button></form><div id="help-content"></div></dialog>
+<input type="file" id="project-file" accept=".json,.vwx,application/json" hidden>
+<input type="file" id="recording-file" accept=".json,.vwr,application/json" hidden>
+<noscript>This application requires JavaScript. Serve this directory over localhost or HTTPS.</noscript>
+<script type="module" src="src/app.js"></script>
+</body>
+</html>

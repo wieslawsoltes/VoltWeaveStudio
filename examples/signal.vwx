@@ -1,0 +1,1131 @@
+{
+  "format": "voltweave",
+  "version": 1,
+  "name": "Signal Integrity Bench",
+  "root": "main",
+  "settings": {
+    "sampleRate": 8192,
+    "blockSize": 256,
+    "seed": 1337,
+    "speed": 1
+  },
+  "graphs": {
+    "gain-vi": {
+      "id": "gain-vi",
+      "name": "Calibration.vi",
+      "inputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "in",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "factor",
+          "type": "constant",
+          "name": "Numeric constant",
+          "x": 40,
+          "y": 300,
+          "params": {
+            "value": 1.025
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "operation",
+          "type": "multiply",
+          "name": "Multiply",
+          "x": 340,
+          "y": 100,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "out",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 640,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_in_value_operation_a",
+          "from": {
+            "node": "in",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_factor_value_operation_b",
+          "from": {
+            "node": "factor",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_operation_value_out_value",
+          "from": {
+            "node": "operation",
+            "port": "value"
+          },
+          "to": {
+            "node": "out",
+            "port": "value"
+          },
+          "probe": false
+        }
+      ]
+    },
+    "case-true": {
+      "id": "case-true",
+      "name": "True · double.vi",
+      "inputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "in",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "factor",
+          "type": "constant",
+          "name": "Numeric constant",
+          "x": 40,
+          "y": 300,
+          "params": {
+            "value": 2
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "operation",
+          "type": "multiply",
+          "name": "Multiply",
+          "x": 340,
+          "y": 100,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "out",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 640,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_in_value_operation_a",
+          "from": {
+            "node": "in",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_factor_value_operation_b",
+          "from": {
+            "node": "factor",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_operation_value_out_value",
+          "from": {
+            "node": "operation",
+            "port": "value"
+          },
+          "to": {
+            "node": "out",
+            "port": "value"
+          },
+          "probe": false
+        }
+      ]
+    },
+    "case-false": {
+      "id": "case-false",
+      "name": "False · invert.vi",
+      "inputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "in",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "factor",
+          "type": "constant",
+          "name": "Numeric constant",
+          "x": 40,
+          "y": 300,
+          "params": {
+            "value": -1
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "operation",
+          "type": "multiply",
+          "name": "Multiply",
+          "x": 340,
+          "y": 100,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "out",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 640,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_in_value_operation_a",
+          "from": {
+            "node": "in",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_factor_value_operation_b",
+          "from": {
+            "node": "factor",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_operation_value_out_value",
+          "from": {
+            "node": "operation",
+            "port": "value"
+          },
+          "to": {
+            "node": "out",
+            "port": "value"
+          },
+          "probe": false
+        }
+      ]
+    },
+    "loop-body": {
+      "id": "loop-body",
+      "name": "Accumulate index.vi",
+      "inputs": [
+        {
+          "key": "value",
+          "type": "number"
+        },
+        {
+          "key": "index",
+          "type": "number"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "value",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "index",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 300,
+          "params": {
+            "port": "index"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "add",
+          "type": "add",
+          "name": "Add",
+          "x": 330,
+          "y": 150,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "out",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 610,
+          "y": 150,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_value_value_add_a",
+          "from": {
+            "node": "value",
+            "port": "value"
+          },
+          "to": {
+            "node": "add",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_index_value_add_b",
+          "from": {
+            "node": "index",
+            "port": "value"
+          },
+          "to": {
+            "node": "add",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_add_value_out_value",
+          "from": {
+            "node": "add",
+            "port": "value"
+          },
+          "to": {
+            "node": "out",
+            "port": "value"
+          },
+          "probe": false
+        }
+      ]
+    },
+    "while-body": {
+      "id": "while-body",
+      "name": "Converge to zero.vi",
+      "inputs": [
+        {
+          "key": "value",
+          "type": "number"
+        },
+        {
+          "key": "index",
+          "type": "number"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "value",
+          "type": "number"
+        },
+        {
+          "key": "continue",
+          "type": "boolean"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "value",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 70,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "half",
+          "type": "constant",
+          "name": "Numeric constant",
+          "x": 40,
+          "y": 260,
+          "params": {
+            "value": 0.5
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "epsilon",
+          "type": "constant",
+          "name": "Numeric constant",
+          "x": 340,
+          "y": 330,
+          "params": {
+            "value": 0.01
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "scale",
+          "type": "multiply",
+          "name": "Multiply",
+          "x": 340,
+          "y": 70,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "compare",
+          "type": "compare",
+          "name": "Compare",
+          "x": 620,
+          "y": 240,
+          "params": {
+            "operation": ">"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "out",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 900,
+          "y": 70,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "continue",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 900,
+          "y": 290,
+          "params": {
+            "port": "continue"
+          },
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_value_value_scale_a",
+          "from": {
+            "node": "value",
+            "port": "value"
+          },
+          "to": {
+            "node": "scale",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_half_value_scale_b",
+          "from": {
+            "node": "half",
+            "port": "value"
+          },
+          "to": {
+            "node": "scale",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_scale_value_compare_a",
+          "from": {
+            "node": "scale",
+            "port": "value"
+          },
+          "to": {
+            "node": "compare",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_epsilon_value_compare_b",
+          "from": {
+            "node": "epsilon",
+            "port": "value"
+          },
+          "to": {
+            "node": "compare",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_scale_value_out_value",
+          "from": {
+            "node": "scale",
+            "port": "value"
+          },
+          "to": {
+            "node": "out",
+            "port": "value"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_compare_value_continue_value",
+          "from": {
+            "node": "compare",
+            "port": "value"
+          },
+          "to": {
+            "node": "continue",
+            "port": "value"
+          },
+          "probe": false
+        }
+      ]
+    },
+    "main": {
+      "id": "main",
+      "name": "Signal Integrity Bench.vi",
+      "inputs": [],
+      "outputs": [],
+      "nodes": [
+        {
+          "id": "frequency",
+          "type": "control",
+          "name": "Frequency",
+          "x": 40,
+          "y": 60,
+          "params": {
+            "value": 64,
+            "min": 1,
+            "max": 512,
+            "unit": "Hz"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "amplitude",
+          "type": "control",
+          "name": "Amplitude",
+          "x": 40,
+          "y": 280,
+          "params": {
+            "value": 2.5,
+            "min": 0,
+            "max": 5,
+            "unit": "V"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "generator",
+          "type": "signal",
+          "name": "Function generator",
+          "x": 320,
+          "y": 70,
+          "params": {
+            "shape": "sine",
+            "frequency": 64,
+            "amplitude": 2.5,
+            "offset": 0,
+            "phase": 0
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "noise",
+          "type": "noise",
+          "name": "Seeded white noise",
+          "x": 320,
+          "y": 310,
+          "params": {
+            "amplitude": 0.28
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "mixer",
+          "type": "mix",
+          "name": "Source + noise",
+          "x": 600,
+          "y": 110,
+          "params": {
+            "mix": 1
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "cutoff",
+          "type": "control",
+          "name": "Filter cutoff",
+          "x": 600,
+          "y": 360,
+          "params": {
+            "value": 180,
+            "min": 20,
+            "max": 1000,
+            "unit": "Hz"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "filter",
+          "type": "filter",
+          "name": "2-pole low-pass",
+          "x": 880,
+          "y": 100,
+          "params": {
+            "cutoff": 180,
+            "order": "2"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "stats",
+          "type": "rms",
+          "name": "Signal measurements",
+          "x": 1160,
+          "y": 20,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "scope",
+          "type": "scope",
+          "name": "Acquisition scope",
+          "x": 1440,
+          "y": 100,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "fft",
+          "type": "fft",
+          "name": "Frequency spectrum",
+          "x": 1160,
+          "y": 300,
+          "params": {
+            "window": "hann"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "rc",
+          "type": "instrument",
+          "name": "RC network · DAQ 01",
+          "x": 880,
+          "y": 540,
+          "params": {
+            "resistance": 1000,
+            "capacitance": 1,
+            "ambient": 23,
+            "limit": 0.02
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "limit",
+          "type": "constant",
+          "name": "Peak limit · 3 V",
+          "x": 1160,
+          "y": 600,
+          "params": {
+            "value": 3
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "alarm",
+          "type": "compare",
+          "name": "Over-range detector",
+          "x": 1440,
+          "y": 450,
+          "params": {
+            "operation": ">"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "calibrate",
+          "type": "subvi",
+          "name": "Calibration.vi",
+          "x": 1440,
+          "y": 690,
+          "params": {
+            "graph": "gain-vi"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "clock",
+          "type": "time",
+          "name": "Deterministic clock",
+          "x": 40,
+          "y": 550,
+          "params": {},
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_frequency_value_generator_frequency",
+          "from": {
+            "node": "frequency",
+            "port": "value"
+          },
+          "to": {
+            "node": "generator",
+            "port": "frequency"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_amplitude_value_generator_amplitude",
+          "from": {
+            "node": "amplitude",
+            "port": "value"
+          },
+          "to": {
+            "node": "generator",
+            "port": "amplitude"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_generator_wave_mixer_a",
+          "from": {
+            "node": "generator",
+            "port": "wave"
+          },
+          "to": {
+            "node": "mixer",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_noise_wave_mixer_b",
+          "from": {
+            "node": "noise",
+            "port": "wave"
+          },
+          "to": {
+            "node": "mixer",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_mixer_wave_filter_x",
+          "from": {
+            "node": "mixer",
+            "port": "wave"
+          },
+          "to": {
+            "node": "filter",
+            "port": "x"
+          },
+          "probe": true
+        },
+        {
+          "id": "w_cutoff_value_filter_cutoff",
+          "from": {
+            "node": "cutoff",
+            "port": "value"
+          },
+          "to": {
+            "node": "filter",
+            "port": "cutoff"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_filter_wave_stats_x",
+          "from": {
+            "node": "filter",
+            "port": "wave"
+          },
+          "to": {
+            "node": "stats",
+            "port": "x"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_mixer_wave_scope_channel1",
+          "from": {
+            "node": "mixer",
+            "port": "wave"
+          },
+          "to": {
+            "node": "scope",
+            "port": "channel1"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_filter_wave_scope_channel2",
+          "from": {
+            "node": "filter",
+            "port": "wave"
+          },
+          "to": {
+            "node": "scope",
+            "port": "channel2"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_mixer_wave_fft_x",
+          "from": {
+            "node": "mixer",
+            "port": "wave"
+          },
+          "to": {
+            "node": "fft",
+            "port": "x"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_filter_wave_rc_drive",
+          "from": {
+            "node": "filter",
+            "port": "wave"
+          },
+          "to": {
+            "node": "rc",
+            "port": "drive"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_stats_peak_alarm_a",
+          "from": {
+            "node": "stats",
+            "port": "peak"
+          },
+          "to": {
+            "node": "alarm",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_limit_value_alarm_b",
+          "from": {
+            "node": "limit",
+            "port": "value"
+          },
+          "to": {
+            "node": "alarm",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_stats_rms_calibrate_value",
+          "from": {
+            "node": "stats",
+            "port": "rms"
+          },
+          "to": {
+            "node": "calibrate",
+            "port": "value"
+          },
+          "probe": true
+        }
+      ]
+    }
+  },
+  "widgets": [
+    {
+      "id": "scope-panel",
+      "kind": "scope",
+      "label": "Acquisition scope",
+      "source": {
+        "node": "mixer",
+        "port": "wave"
+      },
+      "x": 24,
+      "y": 24,
+      "w": 688,
+      "h": 324,
+      "source2": {
+        "node": "filter",
+        "port": "wave"
+      },
+      "unit": "V",
+      "range": 4,
+      "timebase": 0.01,
+      "channel1": "Source + noise",
+      "channel2": "Low-pass output"
+    },
+    {
+      "id": "frequency-knob",
+      "kind": "knob",
+      "label": "Frequency",
+      "source": {
+        "node": "frequency",
+        "port": "value"
+      },
+      "x": 736,
+      "y": 24,
+      "w": 180,
+      "h": 184,
+      "unit": "Hz",
+      "min": 1,
+      "max": 512,
+      "step": 1
+    },
+    {
+      "id": "amplitude-knob",
+      "kind": "knob",
+      "label": "Amplitude",
+      "source": {
+        "node": "amplitude",
+        "port": "value"
+      },
+      "x": 936,
+      "y": 24,
+      "w": 180,
+      "h": 184,
+      "unit": "V",
+      "min": 0,
+      "max": 5,
+      "step": 0.05
+    },
+    {
+      "id": "cutoff-slider",
+      "kind": "slider",
+      "label": "Low-pass cutoff",
+      "source": {
+        "node": "cutoff",
+        "port": "value"
+      },
+      "x": 736,
+      "y": 228,
+      "w": 380,
+      "h": 120,
+      "unit": "Hz",
+      "min": 20,
+      "max": 1000,
+      "step": 1
+    },
+    {
+      "id": "rms-meter",
+      "kind": "meter",
+      "label": "RMS voltage",
+      "source": {
+        "node": "calibrate",
+        "port": "value"
+      },
+      "x": 24,
+      "y": 372,
+      "w": 212,
+      "h": 136,
+      "unit": "V",
+      "digits": 4,
+      "subtitle": "Calibrated · ×1.025"
+    },
+    {
+      "id": "peak-meter",
+      "kind": "meter",
+      "label": "Peak amplitude",
+      "source": {
+        "node": "stats",
+        "port": "peak"
+      },
+      "x": 256,
+      "y": 372,
+      "w": 212,
+      "h": 136,
+      "unit": "V",
+      "digits": 4,
+      "subtitle": "Absolute peak"
+    },
+    {
+      "id": "frequency-meter",
+      "kind": "meter",
+      "label": "Dominant frequency",
+      "source": {
+        "node": "fft",
+        "port": "peakHz"
+      },
+      "x": 488,
+      "y": 372,
+      "w": 224,
+      "h": 136,
+      "unit": "Hz",
+      "digits": 1,
+      "subtitle": "256-point FFT · Hann"
+    },
+    {
+      "id": "temperature-meter",
+      "kind": "meter",
+      "label": "Instrument temperature",
+      "source": {
+        "node": "rc",
+        "port": "temperature"
+      },
+      "x": 736,
+      "y": 372,
+      "w": 180,
+      "h": 136,
+      "unit": "°C",
+      "digits": 2,
+      "subtitle": "RC network · simulated"
+    },
+    {
+      "id": "overload-led",
+      "kind": "led",
+      "label": "Over-range",
+      "source": {
+        "node": "alarm",
+        "port": "value"
+      },
+      "x": 936,
+      "y": 372,
+      "w": 180,
+      "h": 136,
+      "subtitle": "Peak threshold · 3.0 V"
+    },
+    {
+      "id": "fft-chart",
+      "kind": "chart",
+      "label": "Amplitude spectrum",
+      "source": {
+        "node": "fft",
+        "port": "spectrum"
+      },
+      "x": 24,
+      "y": 532,
+      "w": 548,
+      "h": 248,
+      "unit": "V",
+      "range": 3,
+      "spectrum": true,
+      "channel1": "Amplitude spectrum"
+    },
+    {
+      "id": "rc-chart",
+      "kind": "chart",
+      "label": "Virtual instrument response",
+      "source": {
+        "node": "filter",
+        "port": "wave"
+      },
+      "x": 596,
+      "y": 532,
+      "w": 520,
+      "h": 248,
+      "source2": {
+        "node": "rc",
+        "port": "voltage"
+      },
+      "unit": "V",
+      "range": 4,
+      "timebase": 0.01,
+      "channel1": "Drive",
+      "channel2": "Capacitor voltage"
+    }
+  ]
+}

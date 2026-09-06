@@ -1,0 +1,75 @@
+{
+  "mode": "standalone-synthetic-origin",
+  "renderer": "Canvas2D fallback",
+  "secure_context": false,
+  "checks": [
+    {
+      "name": "Application boots and simulated acquisition produces real worker frames",
+      "passed": true
+    },
+    {
+      "name": "Front-panel numeric control changes the live waveform amplitude",
+      "passed": true
+    },
+    {
+      "name": "Pause is stable and single-tick execution advances exactly once",
+      "passed": true
+    },
+    {
+      "name": "Graph node dragging, undo, and redo preserve document geometry",
+      "passed": true
+    },
+    {
+      "name": "Terminal-to-terminal typed wiring replaces the input driver and executes",
+      "passed": true
+    },
+    {
+      "name": "Editor rejects incompatible wire types without corrupting the graph",
+      "passed": true
+    },
+    {
+      "name": "Breakpoint stops before evaluation; node step computes the selected operator",
+      "passed": true
+    },
+    {
+      "name": "Searchable function palette inserts an executable node; Delete removes it",
+      "passed": true
+    },
+    {
+      "name": "Front-panel layout supports dragging, resizing, and undo",
+      "passed": true
+    },
+    {
+      "name": "For, bounded While, array auto-indexing, and lazy Boolean cases execute from editable diagrams",
+      "passed": true
+    },
+    {
+      "name": "Structures open their real nested subdiagrams and navigate back to the caller",
+      "passed": true
+    },
+    {
+      "name": "Input recording and replay work through the UI and release live-input ownership at completion",
+      "passed": true
+    },
+    {
+      "name": "Project JSON export/import round-trip restores executable diagrams and panel bindings",
+      "passed": true
+    },
+    {
+      "name": "PID feedback executes and Stop resets the instrument to tick zero",
+      "passed": true
+    },
+    {
+      "name": "Split workspace and embedded workflow/help dialog are operational",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser page exceptions during the full workflow",
+      "passed": true
+    }
+  ],
+  "page_errors": [],
+  "console_warnings": [
+    "Autosave could not be loaded: Failed to read the 'localStorage' property from 'Window': Access is denied for this document."
+  ]
+}

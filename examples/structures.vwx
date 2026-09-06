@@ -1,0 +1,950 @@
+{
+  "format": "voltweave",
+  "version": 1,
+  "name": "Structures & Array Laboratory",
+  "root": "main",
+  "settings": {
+    "sampleRate": 8192,
+    "blockSize": 256,
+    "seed": 1337,
+    "speed": 1
+  },
+  "graphs": {
+    "gain-vi": {
+      "id": "gain-vi",
+      "name": "Calibration.vi",
+      "inputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "in",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "factor",
+          "type": "constant",
+          "name": "Numeric constant",
+          "x": 40,
+          "y": 300,
+          "params": {
+            "value": 1.025
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "operation",
+          "type": "multiply",
+          "name": "Multiply",
+          "x": 340,
+          "y": 100,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "out",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 640,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_in_value_operation_a",
+          "from": {
+            "node": "in",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_factor_value_operation_b",
+          "from": {
+            "node": "factor",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_operation_value_out_value",
+          "from": {
+            "node": "operation",
+            "port": "value"
+          },
+          "to": {
+            "node": "out",
+            "port": "value"
+          },
+          "probe": false
+        }
+      ]
+    },
+    "case-true": {
+      "id": "case-true",
+      "name": "True · double.vi",
+      "inputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "in",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "factor",
+          "type": "constant",
+          "name": "Numeric constant",
+          "x": 40,
+          "y": 300,
+          "params": {
+            "value": 2
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "operation",
+          "type": "multiply",
+          "name": "Multiply",
+          "x": 340,
+          "y": 100,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "out",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 640,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_in_value_operation_a",
+          "from": {
+            "node": "in",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_factor_value_operation_b",
+          "from": {
+            "node": "factor",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_operation_value_out_value",
+          "from": {
+            "node": "operation",
+            "port": "value"
+          },
+          "to": {
+            "node": "out",
+            "port": "value"
+          },
+          "probe": false
+        }
+      ]
+    },
+    "case-false": {
+      "id": "case-false",
+      "name": "False · invert.vi",
+      "inputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "in",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "factor",
+          "type": "constant",
+          "name": "Numeric constant",
+          "x": 40,
+          "y": 300,
+          "params": {
+            "value": -1
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "operation",
+          "type": "multiply",
+          "name": "Multiply",
+          "x": 340,
+          "y": 100,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "out",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 640,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_in_value_operation_a",
+          "from": {
+            "node": "in",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_factor_value_operation_b",
+          "from": {
+            "node": "factor",
+            "port": "value"
+          },
+          "to": {
+            "node": "operation",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_operation_value_out_value",
+          "from": {
+            "node": "operation",
+            "port": "value"
+          },
+          "to": {
+            "node": "out",
+            "port": "value"
+          },
+          "probe": false
+        }
+      ]
+    },
+    "loop-body": {
+      "id": "loop-body",
+      "name": "Accumulate index.vi",
+      "inputs": [
+        {
+          "key": "value",
+          "type": "number"
+        },
+        {
+          "key": "index",
+          "type": "number"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "value",
+          "type": "number"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "value",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 100,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "index",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 300,
+          "params": {
+            "port": "index"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "add",
+          "type": "add",
+          "name": "Add",
+          "x": 330,
+          "y": 150,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "out",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 610,
+          "y": 150,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_value_value_add_a",
+          "from": {
+            "node": "value",
+            "port": "value"
+          },
+          "to": {
+            "node": "add",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_index_value_add_b",
+          "from": {
+            "node": "index",
+            "port": "value"
+          },
+          "to": {
+            "node": "add",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_add_value_out_value",
+          "from": {
+            "node": "add",
+            "port": "value"
+          },
+          "to": {
+            "node": "out",
+            "port": "value"
+          },
+          "probe": false
+        }
+      ]
+    },
+    "while-body": {
+      "id": "while-body",
+      "name": "Converge to zero.vi",
+      "inputs": [
+        {
+          "key": "value",
+          "type": "number"
+        },
+        {
+          "key": "index",
+          "type": "number"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "value",
+          "type": "number"
+        },
+        {
+          "key": "continue",
+          "type": "boolean"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "value",
+          "type": "input",
+          "name": "Input terminal",
+          "x": 40,
+          "y": 70,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "half",
+          "type": "constant",
+          "name": "Numeric constant",
+          "x": 40,
+          "y": 260,
+          "params": {
+            "value": 0.5
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "epsilon",
+          "type": "constant",
+          "name": "Numeric constant",
+          "x": 340,
+          "y": 330,
+          "params": {
+            "value": 0.01
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "scale",
+          "type": "multiply",
+          "name": "Multiply",
+          "x": 340,
+          "y": 70,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "compare",
+          "type": "compare",
+          "name": "Compare",
+          "x": 620,
+          "y": 240,
+          "params": {
+            "operation": ">"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "out",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 900,
+          "y": 70,
+          "params": {
+            "port": "value"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "continue",
+          "type": "output",
+          "name": "Output terminal",
+          "x": 900,
+          "y": 290,
+          "params": {
+            "port": "continue"
+          },
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_value_value_scale_a",
+          "from": {
+            "node": "value",
+            "port": "value"
+          },
+          "to": {
+            "node": "scale",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_half_value_scale_b",
+          "from": {
+            "node": "half",
+            "port": "value"
+          },
+          "to": {
+            "node": "scale",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_scale_value_compare_a",
+          "from": {
+            "node": "scale",
+            "port": "value"
+          },
+          "to": {
+            "node": "compare",
+            "port": "a"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_epsilon_value_compare_b",
+          "from": {
+            "node": "epsilon",
+            "port": "value"
+          },
+          "to": {
+            "node": "compare",
+            "port": "b"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_scale_value_out_value",
+          "from": {
+            "node": "scale",
+            "port": "value"
+          },
+          "to": {
+            "node": "out",
+            "port": "value"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_compare_value_continue_value",
+          "from": {
+            "node": "compare",
+            "port": "value"
+          },
+          "to": {
+            "node": "continue",
+            "port": "value"
+          },
+          "probe": false
+        }
+      ]
+    },
+    "main": {
+      "id": "main",
+      "name": "Structures & Arrays.vi",
+      "inputs": [],
+      "outputs": [],
+      "nodes": [
+        {
+          "id": "count",
+          "type": "control",
+          "name": "Iteration count",
+          "x": 40,
+          "y": 70,
+          "params": {
+            "value": 16,
+            "min": 0,
+            "max": 64,
+            "unit": ""
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "range",
+          "type": "range",
+          "name": "Ramp array",
+          "x": 320,
+          "y": 70,
+          "params": {
+            "start": 0,
+            "step": 1,
+            "count": 16
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "map",
+          "type": "arrayMap",
+          "name": "Map array",
+          "x": 610,
+          "y": 70,
+          "params": {
+            "operation": "square",
+            "scale": 1,
+            "offset": 0
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "stats",
+          "type": "arrayStats",
+          "name": "Array statistics",
+          "x": 910,
+          "y": 70,
+          "params": {},
+          "breakpoint": false
+        },
+        {
+          "id": "loop",
+          "type": "for",
+          "name": "For · accumulate i",
+          "x": 320,
+          "y": 380,
+          "params": {
+            "graph": "loop-body",
+            "count": 16
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "flag",
+          "type": "boolean",
+          "name": "Select true case",
+          "x": 610,
+          "y": 390,
+          "params": {
+            "value": true
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "case",
+          "type": "case",
+          "name": "Case structure",
+          "x": 910,
+          "y": 430,
+          "params": {
+            "trueGraph": "case-true",
+            "falseGraph": "case-false"
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "seed",
+          "type": "constant",
+          "name": "Numeric constant",
+          "x": 40,
+          "y": 650,
+          "params": {
+            "value": 64
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "while",
+          "type": "while",
+          "name": "While · converge",
+          "x": 320,
+          "y": 650,
+          "params": {
+            "graph": "while-body",
+            "limit": 32
+          },
+          "breakpoint": false
+        },
+        {
+          "id": "calibrate",
+          "type": "subvi",
+          "name": "SubVI",
+          "x": 1210,
+          "y": 440,
+          "params": {
+            "graph": "gain-vi"
+          },
+          "breakpoint": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "w_count_value_range_count",
+          "from": {
+            "node": "count",
+            "port": "value"
+          },
+          "to": {
+            "node": "range",
+            "port": "count"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_range_array_map_array",
+          "from": {
+            "node": "range",
+            "port": "array"
+          },
+          "to": {
+            "node": "map",
+            "port": "array"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_map_array_stats_array",
+          "from": {
+            "node": "map",
+            "port": "array"
+          },
+          "to": {
+            "node": "stats",
+            "port": "array"
+          },
+          "probe": true
+        },
+        {
+          "id": "w_count_value_loop_count",
+          "from": {
+            "node": "count",
+            "port": "value"
+          },
+          "to": {
+            "node": "loop",
+            "port": "count"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_loop_value_case_value",
+          "from": {
+            "node": "loop",
+            "port": "value"
+          },
+          "to": {
+            "node": "case",
+            "port": "value"
+          },
+          "probe": true
+        },
+        {
+          "id": "w_flag_value_case_selector",
+          "from": {
+            "node": "flag",
+            "port": "value"
+          },
+          "to": {
+            "node": "case",
+            "port": "selector"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_case_value_calibrate_value",
+          "from": {
+            "node": "case",
+            "port": "value"
+          },
+          "to": {
+            "node": "calibrate",
+            "port": "value"
+          },
+          "probe": false
+        },
+        {
+          "id": "w_seed_value_while_seed",
+          "from": {
+            "node": "seed",
+            "port": "value"
+          },
+          "to": {
+            "node": "while",
+            "port": "seed"
+          },
+          "probe": false
+        }
+      ]
+    }
+  },
+  "widgets": [
+    {
+      "id": "count-ui",
+      "kind": "slider",
+      "label": "Iteration count",
+      "source": {
+        "node": "count",
+        "port": "value"
+      },
+      "x": 24,
+      "y": 24,
+      "w": 350,
+      "h": 130,
+      "min": 0,
+      "max": 64,
+      "step": 1
+    },
+    {
+      "id": "flag-ui",
+      "kind": "toggle",
+      "label": "Case selector",
+      "source": {
+        "node": "flag",
+        "port": "value"
+      },
+      "x": 394,
+      "y": 24,
+      "w": 230,
+      "h": 130
+    },
+    {
+      "id": "sum-ui",
+      "kind": "meter",
+      "label": "For-loop accumulation",
+      "source": {
+        "node": "loop",
+        "port": "value"
+      },
+      "x": 644,
+      "y": 24,
+      "w": 220,
+      "h": 130,
+      "digits": 0
+    },
+    {
+      "id": "case-ui",
+      "kind": "meter",
+      "label": "Selected case output",
+      "source": {
+        "node": "case",
+        "port": "value"
+      },
+      "x": 884,
+      "y": 24,
+      "w": 230,
+      "h": 130,
+      "digits": 0
+    },
+    {
+      "id": "squared-ui",
+      "kind": "array",
+      "label": "Squared ramp · DBL[]",
+      "source": {
+        "node": "map",
+        "port": "array"
+      },
+      "x": 24,
+      "y": 180,
+      "w": 540,
+      "h": 260
+    },
+    {
+      "id": "loop-values",
+      "kind": "array",
+      "label": "Auto-indexed loop values",
+      "source": {
+        "node": "loop",
+        "port": "values"
+      },
+      "x": 588,
+      "y": 180,
+      "w": 526,
+      "h": 260
+    },
+    {
+      "id": "while-meter",
+      "kind": "meter",
+      "label": "Converged value",
+      "source": {
+        "node": "while",
+        "port": "value"
+      },
+      "x": 24,
+      "y": 468,
+      "w": 280,
+      "h": 150,
+      "digits": 8
+    },
+    {
+      "id": "iterations-meter",
+      "kind": "meter",
+      "label": "While iterations",
+      "source": {
+        "node": "while",
+        "port": "iterations"
+      },
+      "x": 328,
+      "y": 468,
+      "w": 260,
+      "h": 150,
+      "digits": 0
+    },
+    {
+      "id": "stats-meter",
+      "kind": "meter",
+      "label": "Sum of squares",
+      "source": {
+        "node": "stats",
+        "port": "sum"
+      },
+      "x": 612,
+      "y": 468,
+      "w": 240,
+      "h": 150,
+      "digits": 0
+    },
+    {
+      "id": "cal-meter",
+      "kind": "meter",
+      "label": "Reusable VI output",
+      "source": {
+        "node": "calibrate",
+        "port": "value"
+      },
+      "x": 876,
+      "y": 468,
+      "w": 238,
+      "h": 150,
+      "digits": 3
+    }
+  ]
+}
